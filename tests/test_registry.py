@@ -1,6 +1,8 @@
 import pytest
 
-from logpipe.registry import FIRST_TEMPLATE_ID, NewTemplate, SchemaRegistry
+from logpipe.registry import NewTemplate, SchemaRegistry, UniqueTemplateID
+
+FIRST_TEMPLATE_ID = UniqueTemplateID.FIRST_TEMPLATE_ID
 
 
 def _t(*tokens, keys=None, alias_of=None):
@@ -20,7 +22,7 @@ def test_ids_are_monotonic_never_reused_and_versions_increase():
 def test_snapshots_are_immutable():
     snap, _ = SchemaRegistry().publish([_t("a")])
     with pytest.raises(TypeError):
-        snap.templates[99] = None
+        snap.templates[99] = None  # pyright: ignore[reportIndexIssue]
 
 
 def test_round_trip_preserves_ids_and_next_id(tmp_path):
