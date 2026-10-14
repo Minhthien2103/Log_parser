@@ -14,7 +14,7 @@ import os
 import threading
 from collections.abc import Iterable, Mapping, Sequence
 from dataclasses import dataclass, field
-from enum import Enum
+from enum import IntEnum
 from pathlib import Path
 from types import MappingProxyType
 
@@ -23,7 +23,7 @@ from deepparse.masks_types import Mask
 from .parsing.kv import slot_labels
 
 
-class UniqueTemplateID(Enum, int):
+class UniqueTemplateID(IntEnum):
     UNSET_TEMPLATE_ID = 0
     UNK_TEMPLATE_ID = 1
     FIRST_TEMPLATE_ID = 2
