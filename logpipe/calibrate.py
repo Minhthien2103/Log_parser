@@ -53,7 +53,8 @@ def calibrate(
             bucket.append(line)
 
     new_templates = []
-    for cluster in engine.clusters():
+    for cluster in engine.clusters:
+    # for cluster in engine.clusters():
         tokens = tuple(cluster.template)
         keys = tuple(adapter.name_keys(tokens, samples[cluster.cluster_id]))
         new_templates.append(NewTemplate(tokens=tokens, keys=keys))

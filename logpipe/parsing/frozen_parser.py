@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from enum import Enum
+from enum import StrEnum
 
 from deepparse.drain.drain_engine import DrainEngine
 
@@ -9,7 +9,7 @@ from ..registry import UNK_TEMPLATE_ID, RegistrySnapshot
 from .kv import compile_extractor, extract
 
 
-class Status(Enum, str):
+class Status(StrEnum):
     FINAL = "FINAL"
     PENDING = "PENDING"
 
